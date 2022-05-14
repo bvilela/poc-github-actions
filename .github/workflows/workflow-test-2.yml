@@ -1,0 +1,34 @@
+# This workflow will build a Java project with Maven, and cache/restore any dependencies to improve the workflow execution time
+# For more information see: https://help.github.com/actions/language-and-framework-guides/building-and-testing-java-with-maven
+
+name: workflow-test-1
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  jobA:
+    runs-on: ubuntu-latest
+    steps:
+      - name: step A1
+        shell: bash
+        run: |
+          echo "Job A - Step A1"
+          
+  jobB:
+    runs-on: ubuntu-latest
+    steps:
+      - name: step B1
+        shell: bash
+        run: |
+          echo "Job B - Step B1"
+          
+      - name: step B2
+        shell: bash
+        run: |
+          echo "Job B - Step B2"
