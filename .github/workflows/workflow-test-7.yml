@@ -52,3 +52,12 @@ jobs:
         shell: bash
         run: |
           echo "Job E - Step E1 - need jobD"
+          
+  jobF:
+    runs-on: ubuntu-latest
+    needs: [jobC, jobE]
+    steps:
+      - name: step F1
+        shell: bash
+        run: |
+          echo "Job F - Step F1 - needs [jobC, jobE]"
