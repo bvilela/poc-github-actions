@@ -19,7 +19,7 @@ jobs:
           
   jobB:
     runs-on: ubuntu-latest
-    if: success()
+    if: ${{ success() }}
     steps:
       - name: step B1
         shell: bash
