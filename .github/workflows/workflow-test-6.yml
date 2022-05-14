@@ -27,7 +27,7 @@ jobs:
           echooo "Job B - Step B1"
           
       - name: step B2
-        if: ${{ success() }}
+        # if: ${{ success() }} # executed when before step success
         shell: bash
         run: |
           echo "Job B - Step B2"
