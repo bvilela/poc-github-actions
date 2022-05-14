@@ -1,4 +1,4 @@
-name: workflow-test-6
+name: workflow-test-7
 
 on:
   push:
@@ -21,22 +21,34 @@ jobs:
     runs-on: ubuntu-latest
     needs: jobA
     steps:
-      - name: step B1 # se esse step falhar, o workflow para de executar
+      - name: step B1
         shell: bash
         run: |
-          echo "Job B - Step B1" 
-          
-      - name: step B2
-        shell: bash
-        run: |
-          echo "Job B - Step B2"
+          echo "Job B - Step B1 - need jobA" 
           
   jobC:
     runs-on: ubuntu-latest
-    needs: [jobA, jobB]
+    needs: jobA
     steps:
       - name: step C1
         shell: bash
         run: |
-          echo "Job C - Step C1"
+          echo "Job C - Step C1 - need jobA"
           
+  jobD:
+    runs-on: ubuntu-latest
+    needs: jobB
+    steps:
+      - name: step D1
+        shell: bash
+        run: |
+          echo "Job D - Step D1 - need jobB"
+
+  jobE:
+    runs-on: ubuntu-latest
+    needs: jobD
+    steps:
+      - name: step E1
+        shell: bash
+        run: |
+          echo "Job E - Step E1 - need jobD"
