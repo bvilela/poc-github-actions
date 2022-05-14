@@ -13,13 +13,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: step A1 (Error)
-        continue-on-error: false
         shell: bash
         run: |
           eeecho "Job A - Step A1"
           
   jobB:
     runs-on: ubuntu-latest
+    if: success()
     steps:
       - name: step B1
         shell: bash
