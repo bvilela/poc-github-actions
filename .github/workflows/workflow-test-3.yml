@@ -1,4 +1,4 @@
-name: workflow-test-1
+name: workflow-test-3
 
 on:
   push:
@@ -12,10 +12,10 @@ jobs:
   jobA:
     runs-on: ubuntu-latest
     steps:
-      - name: step A1
+      - name: step A1 (Error)
         shell: bash
         run: |
-          echo "Job A - Step A1"
+          eeecho "Job A - Step A1"
           
   jobB:
     runs-on: ubuntu-latest
@@ -24,3 +24,8 @@ jobs:
         shell: bash
         run: |
           echo "Job B - Step B1"
+          
+      - name: step B2
+        shell: bash
+        run: |
+          echo "Job B - Step B2"
