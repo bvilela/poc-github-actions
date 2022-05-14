@@ -1,0 +1,43 @@
+name: workflow-test-6
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  jobA:
+    runs-on: ubuntu-latest
+    steps:
+      - name: step A1 (Error)
+        shell: bash
+        run: |
+          echo "Job A - Step A1"
+          
+  jobB:
+    runs-on: ubuntu-latest
+    needs: jobA
+    steps:
+      - name: step B1
+        shell: bash
+        run: |
+          echooo "Job B - Step B1"
+          
+      - name: step B2
+        if: ${{ success() }}
+        shell: bash
+        run: |
+          echo "Job B - Step B2"
+          
+  jobC:
+    runs-on: ubuntu-latest
+    needs: [jobA, jobB]
+    steps:
+      - name: step C1
+        shell: bash
+        run: |
+          echo "Job C - Step C1"
+          
