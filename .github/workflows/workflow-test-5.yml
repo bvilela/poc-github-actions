@@ -1,4 +1,4 @@
-name: workflow-test-4
+name: workflow-test-5
 
 on:
   push:
@@ -15,15 +15,16 @@ jobs:
       - name: step A1 (Error)
         shell: bash
         run: |
-          echo "Job A - Step A1"
+          echooooo "Job A - Step A1"
           
   jobB:
     runs-on: ubuntu-latest
+    needs: [jobA]
     steps:
       - name: step B1
         shell: bash
         run: |
-          eeeeeecho "Job B - Step B1"
+          echo "Job B - Step B1"
           
       - name: step B2
         if: ${{ success() }}
