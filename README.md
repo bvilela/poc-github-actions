@@ -1,4 +1,4 @@
-# Poc Github Actions
+# PoC Github Actions
 
 GitHub Actions examples.
 
